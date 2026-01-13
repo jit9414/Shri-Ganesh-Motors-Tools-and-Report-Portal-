@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Files - Shri Ganesh Motors</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- =====================================================
+     Use: Main Page Heading
+===================================================== -->
+<h1 class="page-title"> Shri Ganesh Motors</h1>
+
+
+<!-- =====================================================
+     Use: TOOLS SECTION (Always Visible)
+===================================================== -->
+<h2 class="section-title">Tools</h2>
+
+<div class="grid">
+
+  <div class="card" onclick="openLink('invoice.html')">
+    Invoice Maker
+  </div>
+
+  <div class="card" onclick="openLink('gst.html')">
+    GST Calculator
+  </div>
+
+  <div class="card" onclick="openLink('numberplate.html')">
+    Number Plate Order
+  </div>
+
+  <div class="card" onclick="openLink('calling-service.html')">
+    Calling Service
+  </div>
+
+  <div class="card" onclick="openLink('calling-sales.html')">
+    Calling Sales
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     Use: WELCOME SECTION (Files Entry)
+===================================================== -->
+<div class="welcome-box" onclick="toggleFiles()">
+  <h2>Welcome</h2>
+  <p>Click here to open File Records</p>
+</div>
+
+
+<!-- =====================================================
+     Use: FILES SECTION (Hidden by default)
+===================================================== -->
+<div id="filesSection" style="display:none">
+
+  <h2 class="section-title">Files & Records</h2>
+
+  <div class="grid">
+
+    <div class="card" onclick="openLink('insurance-report.html')">
+      Insurance Report
+    </div>
+
+    <div class="card" onclick="openLink('claim-report.html')">
+      Claim Report
+    </div>
+
+    <div class="card" onclick="openLink('claim-reminder.html')">
+      Claim Reminder
+    </div>
+
+    <div class="card coming">More Files Coming</div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
