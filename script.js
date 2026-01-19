@@ -1,9 +1,10 @@
 /* =====================================================
    Use: Open page link
 ===================================================== */
-function openLink(url){
-  window.location.href = url;
+function openLink(url) {
+  window.open(url, "_blank");
 }
+
 
 
 /* =====================================================
@@ -14,3 +15,4 @@ function toggleFiles(){
   section.style.display =
     section.style.display === "none" ? "block" : "none";
 }
+
