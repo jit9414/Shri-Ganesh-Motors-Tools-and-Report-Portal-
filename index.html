@@ -2,133 +2,125 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Files - Shri Ganesh Motors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shri Ganesh Motors</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
+  <canvas id="bgCanvas" class="bg-canvas"></canvas>
 
-<!-- =====================================================
-     Use: Main Page Heading
-===================================================== -->
-<h1 class="page-title"> Shri Ganesh Motors</h1>
-
-
-<!-- =====================================================
-     Use: TOOLS SECTION (Always Visible)
-===================================================== -->
-<h2 class="section-title">Tools</h2>
-
-<div class="grid">
-
-  <div class="card" onclick="openLink('https://script.google.com/macros/s/AKfycbw7uiMv1sEl6TYt95kXLcxSva7ioxFclrkBCEqOKdkzAsLGQhr6ZRpjP4UKRpm3wUXFdQ/exec')">
-    Invoice Maker
+  <div class="welcome-overlay" id="welcomeOverlay" aria-hidden="true">
+    <div class="welcome-panel">
+      <div class="welcome-badge">Welcome to</div>
+      <h1 id="welcomeTitle">Shri Ganesh Motors</h1>
+      <p id="welcomeSubtitle">Your smart operations hub with fast access to invoices, receipts, and records.</p>
+      <div class="loading-orbit" aria-hidden="true"><span></span></div>
+      <div class="loading-bar">
+        <span id="loadingBar"></span>
+      </div>
+      <div class="welcome-status" id="welcomeStatus">Initializing dashboard...</div>
+      <div class="welcome-actions">
+        <button id="skipIntroBtn" type="button" class="welcome-btn">Skip intro</button>
+        <button id="muteIntroBtn" type="button" class="welcome-btn">Mute</button>
+      </div>
+    </div>
   </div>
 
-  <div class="card" onclick="openLink('https://jit9414.github.io/GST-calculator/')">
-    GST Calculator
-  </div>
+  <div class="app-shell">
+    <header class="mini-header">
+      <h1 class="page-title">Shri Ganesh Motors</h1>
+    </header>
 
-  <div class="card" onclick="openLink('https://script.google.com/macros/s/AKfycbzdt0vJFmHLh21VWF0qXMP6CbSgF_41VzWO-pVKJbMiQrp0tWh1FkIJLI9TQqwPVtrv/exec')">
-    Calling Service
-  </div>
+    <section class="search-panel">
+      <label class="search-wrap" for="toolSearch">
+        <span class="search-icon">⌕</span>
+        <input id="toolSearch" type="text" placeholder="Search tools or records..." aria-label="Search tools and records">
+      </label>
+      <div class="search-hint">Try: invoice, receipt, claim, finance</div>
+      <div id="searchStatus" class="search-status">Showing all tools</div>
+    </section>
 
-  <div class="card" onclick="openLink('https://jit9414.github.io/hirise-help/')">
-    Hirise Help
-  </div>
+    <section class="section-card">
+      <h2 class="section-title">Tools</h2>
+      <div class="grid">
+        <div class="card" data-search="invoice maker billing" onclick="openLink('https://script.google.com/macros/s/AKfycbw7uiMv1sEl6TYt95kXLcxSva7ioxFclrkBCEqOKdkzAsLGQhr6ZRpjP4UKRpm3wUXFdQ/exec')">
+          <span class="card-icon">🧾</span>
+          <span class="card-label">Invoice Maker</span>
+        </div>
 
-    <div class="card" onclick="openLink('https://jit9414.github.io/Shriganeshrecpt/')">
-    Finance Receipt 
-  </div>
+        <div class="card" data-search="gst calculator tax" onclick="openLink('https://jit9414.github.io/GST-calculator/')">
+          <span class="card-icon">💹</span>
+          <span class="card-label">GST Calculator</span>
+        </div>
 
-   <div class="card" onclick="openLink('https://jit9414.github.io/ganesh-motors-quotation/')">
-    QUOTATION
-  </div>
+        <div class="card" data-search="calling service contact" onclick="openLink('https://script.google.com/macros/s/AKfycbzdt0vJFmHLh21VWF0qXMP6CbSgF_41VzWO-pVKJbMiQrp0tWh1FkIJLI9TQqwPVtrv/exec')">
+          <span class="card-icon">📞</span>
+          <span class="card-label">Calling Service</span>
+        </div>
 
-     <div class="card" onclick="openLink('https://jit9414.github.io/Customer-Receipt/')">
-    Customer Receipt
-  </div>
+        <div class="card" data-search="hirise help support" onclick="openLink('https://jit9414.github.io/hirise-help/')">
+          <span class="card-icon">🛠️</span>
+          <span class="card-label">Hirise Help</span>
+        </div>
 
-       <div class="card" onclick="openLink('https://script.google.com/macros/s/AKfycbzMIwjfBouJMvQcBGf4JJFtht9LDkO2eeFZ5DzVdwquy0sqEFzs3s-CW8r736kFUIVqZA/exec')">
-    Number Plate Management System
-  </div>
-  
-</div>
+        <div class="card" data-search="finance receipt payment" onclick="openLink('https://jit9414.github.io/Shriganeshrecpt/')">
+          <span class="card-icon">💰</span>
+          <span class="card-label">Finance Receipt</span>
+        </div>
 
+        <div class="card" data-search="quotation estimate sales" onclick="openLink('https://jit9414.github.io/ganesh-motors-quotation/')">
+          <span class="card-icon">📄</span>
+          <span class="card-label">Quotation</span>
+        </div>
 
-<!-- =====================================================
-     Use: WELCOME SECTION (Files Entry)
-===================================================== -->
-<div class="welcome-box" onclick="toggleFiles()">
-  <h2>Welcome</h2>
-  <p>Click here to open File Records</p>
-</div>
+        <div class="card" data-search="customer receipt billing" onclick="openLink('https://jit9414.github.io/Customer-Receipt/')">
+          <span class="card-icon">🧾</span>
+          <span class="card-label">Customer Receipt</span>
+        </div>
 
+        <div class="card" data-search="number plate management system vehicle" onclick="openLink('https://script.google.com/macros/s/AKfycbzMIwjfBouJMvQcBGf4JJFtht9LDkO2eeFZ5DzVdwquy0sqEFzs3s-CW8r736kFUIVqZA/exec')">
+          <span class="card-icon">🚗</span>
+          <span class="card-label">Number Plate Management</span>
+        </div>
+      </div>
+    </section>
 
-<!-- =====================================================
-     Use: FILES SECTION (Hidden by default)
-===================================================== -->
-<div id="filesSection" style="display:none">
-
-  <h2 class="section-title">Files & Records</h2>
-
-  <div class="grid">
-
-    <div class="card"
-     onclick="openLink('https://script.google.com/macros/s/AKfycbwdGl2R0xzGmTmDHYRCZ1VBsyU4M15QRUQSgYapBnxFTNYrT-Aq2BMaNwPbam-gLTobVw/exec')">
-  Insurance Report
-</div>
-
-
-    <div class="card" onclick="openLink('https://script.google.com/macros/s/AKfycbxE4YghN-URX73ei0zeOhl1lPdJsDsz5KBXLnwY5dEoUTvMFvY7ihkt4DWhnEVQb8dyJw/exec')">
-     Claim Payment Tracking System
+    <div class="welcome-box" onclick="toggleFiles()">
+      <h2>Open Files & Records</h2>
+      <p>Click here to reveal the complete record management section.</p>
     </div>
 
-    <div class="card" onclick="openLink('https://script.google.com/macros/s/AKfycbzTbqWDWxlA0L4Fhe7r_Q8lGIbTQ4Qehy7MJB1QpfhTMaCHtP9iYQWkpYuV9UmNS7F4/exec')">
-      Sales Borrowing Management System
-    </div>
+    <section id="filesSection" class="files-section" style="display:none">
+      <h2 class="section-title">Files & Records</h2>
+      <div class="grid">
+        <div class="card" data-search="insurance report policy" onclick="openLink('https://script.google.com/macros/s/AKfycbwdGl2R0xzGmTmDHYRCZ1VBsyU4M15QRUQSgYapBnxFTNYrT-Aq2BMaNwPbam-gLTobVw/exec')">
+          <span class="card-icon">🛡️</span>
+          <span class="card-label">Insurance Report</span>
+        </div>
 
-    <div class="card" onclick="openLink('https://script.google.com/macros/s/AKfycbwu6Sh3xbYjQb7GNm76LK2nL9DrzE5tIYvlZpI7FHVxxowrspCwJIgcyNILJ073D_WZmQ/exec')">
-      Service Parts Borrowing Management System
-    </div>
+        <div class="card" data-search="claim payment tracking system" onclick="openLink('https://script.google.com/macros/s/AKfycbxE4YghN-URX73ei0zeOhl1lPdJsDsz5KBXLnwY5dEoUTvMFvY7ihkt4DWhnEVQb8dyJw/exec')">
+          <span class="card-icon">💳</span>
+          <span class="card-label">Claim Payment Tracking</span>
+        </div>
 
-    <div class="card" onclick="openLink('https://script.google.com/macros/s/AKfycbyuTSm1KVRUPNyGc8E6xxJBPXBliXZtu4-B29Ew2QDwPXagomXdyShTG6ZSgX_pA-1DGA/exec')">
-      DHARM HONDA JT FINANCIAL
-    </div>
-    
+        <div class="card" data-search="sales borrowing management system finance" onclick="openLink('https://script.google.com/macros/s/AKfycbzTbqWDWxlA0L4Fhe7r_Q8lGIbTQ4Qehy7MJB1QpfhTMaCHtP9iYQWkpYuV9UmNS7F4/exec')">
+          <span class="card-icon">📊</span>
+          <span class="card-label">Sales Borrowing</span>
+        </div>
+
+        <div class="card" data-search="service parts borrowing management system" onclick="openLink('https://script.google.com/macros/s/AKfycbwu6Sh3xbYjQb7GNm76LK2nL9DrzE5tIYvlZpI7FHVxxowrspCwJIgcyNILJ073D_WZmQ/exec')">
+          <span class="card-icon">🧰</span>
+          <span class="card-label">Service Parts Borrowing</span>
+        </div>
+
+        <div class="card" data-search="dharm honda jt financial" onclick="openLink('https://script.google.com/macros/s/AKfycbyuTSm1KVRUPNyGc8E6xxJBPXBliXZtu4-B29Ew2QDwPXagomXdyShTG6ZSgX_pA-1DGA/exec')">
+          <span class="card-icon">🏢</span>
+          <span class="card-label">DHARM HONDA JT FINANCIAL</span>
+        </div>
+      </div>
+    </section>
   </div>
-</div>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
